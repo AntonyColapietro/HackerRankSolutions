@@ -1,13 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hackerranksolutions;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author tony
+ * A linked list is said to contain a cycle if any node is visited more than once while traversing the list.
+
+Complete the function provided in the editor below. It has one parameter: a pointer to a Node object named that points to the head of a linked list. Your function must return a boolean denoting whether or not there is a cycle in the list. If there is a cycle, return true; otherwise, return false.
+
+Note: If the list is empty, will be null.
+
+Input Format
+
+Our hidden code checker passes the appropriate argument to your function. You are not responsible for reading any input from stdin.
+
+Constraints
+
+Output Format
+
+If the list contains a cycle, your function must return true. If the list does not contain a cycle, it must return false. The binary integer corresponding to the boolean value returned by your function is printed to stdout by our hidden code checker.
  */
 public class Solution {
 
@@ -18,4 +29,47 @@ public class Solution {
         // TODO code application logic here
     }
     
+    /*
+Detect a cycle in a linked list. Note that the head pointer may be 'null' if the list is empty.
+
+A Node is defined as: 
+    class Node {
+        int data;
+        Node next;
+    }
+*/
+    
+class Node {
+    
+    int data;
+    Node next;
+    
+}
+
+boolean hasCycle(Node head) {
+    
+    if (head == null)
+        return false;
+    else{
+        Node currentNode = head;
+        List<Node> destinationNodes = new ArrayList();
+        
+        destinationNodes.add(currentNode);
+        
+        while(currentNode.next != null )
+        {
+            if( destinationNodes.contains(currentNode.next))
+                return true;
+            else
+                destinationNodes.add(currentNode.next);
+
+            currentNode = currentNode.next;
+        }
+        
+        return false;
+  
+        
+    }
+
+}
 }
